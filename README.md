@@ -2,7 +2,7 @@
 
 ## A Haskell library for data type visualisation
 
-### Draw a list
+### Example: Draw a list
 
 ```haskell
 import Data.Text.DrawADT
@@ -21,7 +21,7 @@ instance (Draw repr, Show a) => DrawADT repr [a] where
     where f now acc = line (now :) (show now) ++> acc
 ```
 
-This library is developed in the [finally tagless](http://okmij.org/ftp/tagless-final/JFP.pdf) style [[1](#1), [2](#2)], so the interpretations of `line`, `++>` and `<++` are decided by the instance of `Draw`. In this example, `line a s` creates a single line of text representing `a` with `s`, `a ++> b` connects `b` to the right side of `a`, and `b <++ a` connects `b` to the left side of `a`.
+This library is developed in the [finally tagless](http://okmij.org/ftp/tagless-final/JFP.pdf) style [[1](#1), [2](#2)], so the interpretations of `line`, `++>` and `<++` are decided by the instance of `Draw`. In the following examples, `line a s` creates a single line of text representing `a` with `s`, `a ++> b` connects `b` to the right side of `a`, and `b <++ a` connects `b` to the left side of `a`.
 
 In this library, left and right on the screen are defined as follows.
 
@@ -52,6 +52,8 @@ printDraw = T.putStr . toText
 
 Run `printDraw (draw testList)` and we will get:
 
+_may not be correctly displayed if the font is not monospaced_
+
 ```
 ────1
     └────2
@@ -61,7 +63,7 @@ Run `printDraw (draw testList)` and we will get:
                         └──── ~
 ```
 
-### Draw a binary tree
+### Example: Draw a binary tree
 
 With [recursion schemes](http://hackage.haskell.org/package/recursion-schemes) [[3](#3)], we can implement the `DrawADT` instances for our data types in a more elegant way.
 
@@ -87,6 +89,8 @@ testBinTree = ana coalg
 ```
 
 Run `printDraw (draw (testBinTree 4))` and we will get:
+
+_may not be correctly displayed if the font is not monospaced_
 
 ```
                    ┌──── ~
@@ -123,6 +127,8 @@ instance (Draw repr, ApplyDraw repr, Show a) => DrawADT repr (LeafBinTree a) whe
 Here we use `para` to see the sub-structures.
 
 Run `printDraw (draw (LeafBinTree (testBinTree 4)))` and we will get:
+
+_may not be correctly displayed if the font is not monospaced_
 
 ```
               ┌────1
