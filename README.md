@@ -142,6 +142,109 @@ _may not be correctly displayed if the font is not monospaced_
 
 A code snippet by Donnacha Oisín Kidney for a similar purpose can be found at [Drawing Trees](https://doisinkidney.com/snippets/drawing-trees.html).
 
+### Example: Draw a quadtree
+
+```haskell
+data QuadTree a = QuadEmpty | QuadTree a (QuadTree a) (QuadTree a) (QuadTree a) (QuadTree a) deriving (Show)
+
+makeBaseFunctor ''QuadTree
+```
+
+This `DrawADT` instance for `QuadTree` is relatively straightforward. A noteworthy point is the consecutive use of the `++>` and `<++` operators.
+
+```haskell
+instance (Draw repr, Show a) => DrawADT repr (QuadTree a) where
+  draw = cata alg
+    where alg (QuadTreeF a fl nl nr fr) = fl <++ nl <++ line (QuadTree a) (show a) ++> nr ++> fr
+          alg QuadEmptyF = line QuadEmpty " ~"
+
+testQuadTree :: Int -> QuadTree Int
+testQuadTree = ana coalg
+  where coalg n
+          | n <= 0 = QuadEmptyF
+          | otherwise = QuadTreeF n (n - 1) (n - 2) (n - 3) (n - 4)
+```
+
+Run `printDraw (draw (testQuadTree 3))` and we will get:
+
+_may not be correctly displayed if the font is not monospaced_
+
+```
+              ┌──── ~
+              ├──── ~
+         ┌────1
+         │    ├──── ~
+         │    └──── ~
+         ├──── ~
+    ┌────2
+    │    ├──── ~
+    │    └──── ~
+    │    ┌──── ~
+    │    ├──── ~
+    ├────1
+    │    ├──── ~
+    │    └──── ~
+────3
+    ├──── ~
+    └──── ~
+```
+
+We can define a new instance for `QuadTree` to remove these `~` as in the `BinTree` example, but let's concentrate on another potential problem in current implementation. If the data held by the `QuadTree` is not simply integers, but more complex data types, such as lists or even quadtrees, we may need to crush a complex structure into one line or add an extra branch to display the data. Is there a better solution?
+
+Yes. By including `BlockDraw repr` in the constraints, we can hold the data in an anonymous `block` and use the block as a _centre_ node. The `block` is called anonymous because it does not take a `String` as a parameter like `line`.
+
+_A named block may introduce extra complexity, so it is not provided in this library._
+
+```haskell
+newtype ComplexQuadTree a = ComplexQuadTree (QuadTree a)
+
+-- class BlockDraw (repr :: * -> *) where
+--   block :: (a -> b) -> repr a -> repr b
+instance (Draw repr, BlockDraw repr, ApplyDraw repr, DrawADT repr a) => DrawADT repr (ComplexQuadTree a) where
+  draw (ComplexQuadTree t) = apply ComplexQuadTree (cata alg t)
+    where alg (QuadTreeF a fl nl nr fr) = fl <++ nl <++ block QuadTree (draw a) ++> nr ++> fr
+          alg QuadEmptyF = line QuadEmpty " ~"
+
+testComplexQuadTree :: Int -> QuadTree [Int]
+testComplexQuadTree = ana coalg
+  where coalg n
+          | n <= 0 = QuadEmptyF
+          | otherwise = QuadTreeF [0..n] (n - 1) (n - 2) (n - 3) (n - 4)
+```
+
+Run `printDraw (draw (ComplexQuadTree (testComplexQuadTree 3)))` and we will get:
+
+```
+              ┌──── ~
+              ├──── ~
+         ┌────╬────0
+         │    │    └────1
+         │    │         └──── ~
+         │    ├──── ~
+         │    └──── ~
+         ├──── ~
+    ┌────╬────0
+    │    │    └────1
+    │    │         └────2
+    │    │              └──── ~
+    │    ├──── ~
+    │    └──── ~
+    │    ┌──── ~
+    │    ├──── ~
+    ├────╬────0
+    │    │    └────1
+    │    │         └──── ~
+    │    ├──── ~
+    │    └──── ~
+────╬────0
+    │    └────1
+    │         └────2
+    │              └────3
+    │                   └──── ~
+    ├──── ~
+    └──── ~
+```
+
 ##### [1]
 Oleg Kiselyov. 2010. Typed tagless final interpreters. In Proceedings of the 2010 international spring school conference on Generic and Indexed Programming (SSGIP'10), Jeremy Gibbons (Ed.). Springer-Verlag, Berlin, Heidelberg, 130-174.
 

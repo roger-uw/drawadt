@@ -52,6 +52,34 @@ instance (Draw repr, ApplyDraw repr, Show a) => DrawADT repr (LeafBinTree a) whe
           alg (BinTreeF a (BinEmpty, _) (_, r)) = line (BinTree a BinEmpty) (show a) ++> r
           alg (BinTreeF a (_, l) (_, r)) = l <++ line (BinTree a) (show a) ++> r
 
+data QuadTree a = QuadEmpty | QuadTree a (QuadTree a) (QuadTree a) (QuadTree a) (QuadTree a) deriving (Show)
+
+makeBaseFunctor ''QuadTree
+
+instance (Draw repr, Show a) => DrawADT repr (QuadTree a) where
+  draw = cata alg
+    where alg (QuadTreeF a fl nl nr fr) = fl <++ nl <++ line (QuadTree a) (show a) ++> nr ++> fr
+          alg QuadEmptyF = line QuadEmpty " ~"
+
+testQuadTree :: Int -> QuadTree Int
+testQuadTree = ana coalg
+  where coalg n
+          | n <= 0 = QuadEmptyF
+          | otherwise = QuadTreeF n (n - 1) (n - 2) (n - 3) (n - 4)
+
+newtype ComplexQuadTree a = ComplexQuadTree (QuadTree a)
+
+instance (Draw repr, BlockDraw repr, ApplyDraw repr, DrawADT repr a) => DrawADT repr (ComplexQuadTree a) where
+  draw (ComplexQuadTree t) = apply ComplexQuadTree (cata alg t)
+    where alg (QuadTreeF a fl nl nr fr) = fl <++ nl <++ block QuadTree (draw a) ++> nr ++> fr
+          alg QuadEmptyF = line QuadEmpty " ~"
+
+testComplexQuadTree :: Int -> QuadTree [Int]
+testComplexQuadTree = ana coalg
+  where coalg n
+          | n <= 0 = QuadEmptyF
+          | otherwise = QuadTreeF [0..n] (n - 1) (n - 2) (n - 3) (n - 4)
+
 data RoseTree a = RoseTree a [RoseTree a] deriving (Show)
 
 makeBaseFunctor ''RoseTree
@@ -64,21 +92,6 @@ instance (Draw repr, BlockDraw repr, DrawADT repr a) => DrawADT repr (RoseTree a
 
 testRoseTree :: RoseTree Int
 testRoseTree = RoseTree 5 [RoseTree 4 [], RoseTree 3 [], RoseTree 2 [RoseTree 1 [], RoseTree 0 []]]
-
-data QuadTree a = QuadEmpty | QuadTree a (QuadTree a) (QuadTree a) (QuadTree a) (QuadTree a) deriving (Show)
-
-makeBaseFunctor ''QuadTree
-
-instance (Draw repr, DrawADT repr a) => DrawADT repr (QuadTree a) where
-  draw = cata alg
-    where alg (QuadTreeF a fl nl nr fr) = fl <++ nl <++ draw a <++ line (QuadTree) "Quad" ++> nr ++> fr
-          alg QuadEmptyF = line QuadEmpty " ~"
-
-testQuadTree :: Int -> QuadTree Int
-testQuadTree = ana coalg
-  where coalg n
-          | n <= 0 = QuadEmptyF
-          | otherwise = QuadTreeF n (n - 1) (n - 2) (n - 3) (n - 4)
 
 data Op = Add | Sub | Mul | Div deriving (Show)
 type Id = String
