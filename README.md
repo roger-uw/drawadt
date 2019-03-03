@@ -193,7 +193,7 @@ We can define a new instance for `QuadTree` to remove these `~` as in the `BinTr
 
 Yes. By including `BlockDraw repr` in the constraints, we can hold the data in an anonymous `block` and use the block as a _centre_ node. The `block` is called anonymous because it does not take a `String` as a parameter like `line`.
 
-_A named block may introduce extra complexity, so it is not provided in this library._
+_A named block may introduce extra complexity, so it is not provided in this library, but an implementation can be found [here](https://github.com/roger-uw/drawadt/tree/namedBlock)._
 
 ```haskell
 newtype ComplexQuadTree a = ComplexQuadTree (QuadTree a)
