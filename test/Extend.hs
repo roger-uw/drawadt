@@ -19,8 +19,8 @@ instance ApplyDrawT IDDrawT where
   applyT f (IDDrawT a) = IDDrawT (f a)
 
 instance (RenderUnicodeDrawTConstraints v l s) => ApplyDrawT (RenderUnicodeDrawT v l s) where
-  applyT _ (RenderUnicodeDrawT d) = RenderUnicodeDrawT $ \cxt cxtB -> do
-    UnicodeDrawT fl nl nr fr <- d cxt cxtB
+  applyT _ (RenderUnicodeDrawT d) = RenderUnicodeDrawT $ \cxt -> do
+    UnicodeDrawT fl nl nr fr <- d cxt
     return (UnicodeDrawT fl nl nr fr)
 
 class ApplyDraw (repr :: Type -> Type) where

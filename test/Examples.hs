@@ -41,7 +41,7 @@ testBinTree :: Int -> BinTree Int
 testBinTree = ana coalg
   where coalg n
           | n <= 0 = BinEmptyF
-          | otherwise = BinTreeF n (n - 1) (n - 2)
+          | otherwise = BinTreeF n (n - 1) (n - 1)
 
 newtype LeafBinTree a = LeafBinTree (BinTree a)
 

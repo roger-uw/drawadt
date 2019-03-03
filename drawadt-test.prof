@@ -1,0 +1,250 @@
+	Sun Mar 03 12:39 2019 Time and Allocation Profiling Report  (Final)
+
+	   drawadt-test.exe +RTS -N -p -RTS
+
+	total time  =        0.44 secs   (1771 ticks @ 1000 us, 4 processors)
+	total alloc = 8,611,211,448 bytes  (excludes profiling overheads)
+
+COST CENTRE           MODULE                                  SRC                                                              %time %alloc
+
+map                   Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(521,1)-(522,36)                             27.7   24.3
+concat                Data.ListLike.Text.TextLazy             src\Data\ListLike\Text\TextLazy.hs:42:5-30                        11.7   17.5
++>.\                  Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(100,81)-(118,5)   10.3    7.8
+append                Data.ListLike.Text.TextLazy             src\Data\ListLike\Text\TextLazy.hs:32:5-21                         9.3   18.8
+<+.\                  Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(119,81)-(137,5)    8.1    6.5
+++                    Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(457,1)-(458,33)                              7.6    9.9
+lineT                 Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(97,3)-(99,115)     4.9    2.0
+draw.alg              Examples                                test\Examples.hs:(50,11)-(53,80)                                   3.5    2.2
+line                  Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:20:3-29                       2.6    2.9
+rnf                   Data.Text.Lazy                          Data\Text\Lazy.hs:(377,5)-(378,29)                                 2.5    0.0
+fromString            Data.Text.Lazy                          Data\Text\Lazy.hs:366:5-21                                         2.2    1.1
+foldr.go              Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(583,5)-(584,31)                              1.4    0.4
+flattenUnicodeDrawT.\ Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:174:28-61           1.0    0.5
+<++                   Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:22:3-39                       0.9    1.0
+ana.a                 Data.Functor.Foldable                   Data\Functor\Foldable.hs:198:19-40                                 0.8    1.4
+para.p                Data.Functor.Foldable                   Data\Functor\Foldable.hs:162:20-57                                 0.3    1.8
+
+
+                                                                                                                                                                individual      inherited
+COST CENTRE                         MODULE                                  SRC                                                             no.      entries  %time %alloc   %time %alloc
+
+MAIN                                MAIN                                    <built-in>                                                      3303          0    0.0    0.0   100.0  100.0
+ CAF                                GHC.IO.Encoding.CodePage                <entire-module>                                                 6596          0    0.0    0.0     0.0    0.0
+ CAF                                GHC.IO.Encoding                         <entire-module>                                                 6589          0    0.0    0.0     0.0    0.0
+ CAF                                GHC.Conc.Windows                        <entire-module>                                                 6582          0    0.0    0.0     0.0    0.0
+ CAF                                GHC.IO.Handle.FD                        <entire-module>                                                 6565          0    0.0    0.0     0.0    0.0
+ CAF:$fFunctorVec_$cfmap            Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:131:5-8                                    3509          0    0.0    0.0     0.0    0.0
+  fmap                              Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:131:5-14                                   6750          1    0.0    0.0     0.0    0.0
+ CAF:$fIsStringText_$cfromString    Data.Text.Lazy                          Data\Text\Lazy.hs:366:5-14                                      6401          0    0.0    0.0     0.0    0.0
+  fromString                        Data.Text.Lazy                          Data\Text\Lazy.hs:366:5-21                                      6703          1    0.0    0.0     0.0    0.0
+ CAF:$fListLikeTextChar_$cappend    Data.ListLike.Text.TextLazy             src\Data\ListLike\Text\TextLazy.hs:32:5-10                      4984          0    0.0    0.0     0.0    0.0
+  append                            Data.ListLike.Text.TextLazy             src\Data\ListLike\Text\TextLazy.hs:32:5-21                      6689          1    0.0    0.0     0.0    0.0
+ CAF:$fListLike[]a_$ctoList         Data.ListLike.Base                      src\Data\ListLike\Base.hs:597:5-10                              4898          0    0.0    0.0     0.0    0.0
+  toList                            Data.ListLike.Base                      src\Data\ListLike\Base.hs:597:5-15                              6693          1    0.0    0.0     0.0    0.0
+ CAF:$fSizedListLikeVec_$cappend    Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:39:3-8            3481          0    0.0    0.0     0.0    0.0
+  append                            Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:39:3-18           6677          1    0.0    0.0     0.0    0.0
+ CAF:$fSizedListLikeVec_$ccons      Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:34:3-6            3486          0    0.0    0.0     0.0    0.0
+  cons                              Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:34:3-17           6687          1    0.0    0.0     0.0    0.0
+ CAF:$fSizedListLikeVec_$cempty     Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:33:3-7            3487          0    0.0    0.0     0.0    0.0
+  empty                             Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:33:3-18           6685          1    0.0    0.0     0.0    0.0
+ CAF:$fSizedListLikeVec_$cfoldr     Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:40:3-7            3480          0    0.0    0.0     0.0    0.0
+  foldr                             Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:40:3-18           6673          1    0.0    0.0     0.0    0.0
+ CAF:$fSizedListLikeVec_$chead      Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:36:3-6            3484          0    0.0    0.0     0.0    0.0
+  head                              Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:36:3-16           6730          1    0.0    0.0     0.0    0.0
+ CAF:$fSizedListLikeVec_$cmap       Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:38:3-5            3482          0    0.0    0.0     0.0    0.0
+  map                               Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:38:3-14           6679          1    0.0    0.0     0.0    0.0
+ CAF:$fSizedListLikeVec_$csingleton Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:35:3-11           3485          0    0.0    0.0     0.0    0.0
+  singleton                         Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:35:3-26           6732          1    0.0    0.0     0.0    0.0
+ CAF:$fSizedListLikeVec_$ctail      Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:37:3-6            3483          0    0.0    0.0     0.0    0.0
+  tail                              Data.Text.DrawADT.Tagged.SizedListLike  src\Data\Text\DrawADT\Tagged\SizedListLike.hs:37:3-16           6751          1    0.0    0.0     0.0    0.0
+ CAF:defaultUnicodeConfig1          Data.Text.DrawADT.Tagged.Render.Unicode <no location info>                                              3478          0    0.0    0.0     0.0    0.0
+ CAF:empty                          Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:257:1-5                                    3496          0    0.0    0.0     0.0    0.0
+  empty                             Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:257:1-12                                   6686          1    0.0    0.0     0.0    0.0
+ CAF:lvl14_rjiB                     Data.Text.DrawADT.Tagged.Render.Unicode <no location info>                                              3479          0    0.0    0.0     0.0    0.0
+ CAF:lvl7_r37K5                     Data.Text.Lazy                          <no location info>                                              6399          0    0.0    0.0     0.0    0.0
+  unstreamChunks/inner              Data.Text.Internal.Lazy.Fusion          Data\Text\Internal\Lazy\Fusion.hs:(79,17)-(83,59)               6717          0    0.0    0.0     0.0    0.0
+   unstreamChunks/outer             Data.Text.Internal.Lazy.Fusion          Data\Text\Internal\Lazy\Fusion.hs:(62,15)-(68,43)               6718          1    0.0    0.0     0.0    0.0
+ CAF:main1                          Main                                    <no location info>                                              3348          0    0.0    0.0     0.0    0.0
+  main                              Main                                    test\Spec.hs:(9,1)-(11,11)                                      6606          1    0.0    0.0     0.0    0.0
+ CAF:main2                          Main                                    <no location info>                                              3347          0    0.0    0.0    84.0   87.7
+  main                              Main                                    test\Spec.hs:(9,1)-(11,11)                                      6608          0    0.0    0.0    84.0   87.7
+   rnf                              Data.Text.Lazy                          Data\Text\Lazy.hs:(377,5)-(378,29)                              6716   22020096    2.5    0.0     2.5    0.0
+   draw                             Examples                                test\Examples.hs:(49,3)-(53,80)                                 6635          0    0.0    0.0    52.5   45.2
+    apply                           Extend                                  test\Extend.hs:33:3-38                                          6636          0    0.0    0.0     0.0    0.0
+     applyT                         Extend                                  test\Extend.hs:(22,3)-(24,37)                                   6637          0    0.0    0.0     0.0    0.0
+      applyT.\                      Extend                                  test\Extend.hs:(22,66)-(24,37)                                  6638          1    0.0    0.0     0.0    0.0
+    para                            Data.Functor.Foldable                   Data\Functor\Foldable.hs:162:3-57                               6644          0    0.0    0.0    52.5   45.2
+     para.p                         Data.Functor.Foldable                   Data\Functor\Foldable.hs:162:20-57                              6645          0    0.0    0.0    52.5   45.2
+      draw.alg                      Examples                                test\Examples.hs:(50,11)-(53,80)                                6646          0    0.0    0.0    52.5   45.2
+       ++>                          Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:21:3-39                    6647          0    0.0    0.0     0.3    0.3
+        +>                          Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(100,3)-(118,5)  6648          0    0.1    0.0     0.3    0.3
+         +>.\                       Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(100,81)-(118,5) 6649     262144    0.2    0.3     0.3    0.3
+          mergeCxt                  Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(81,1)-(88,17)   6697     262144    0.1    0.0     0.1    0.0
+       <++                          Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:22:3-39                    6657          0    0.1    0.1    49.0   42.4
+        <+                          Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(119,3)-(137,5)  6658          0    0.2    0.2    49.0   42.4
+         <+.\                       Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(119,81)-(137,5) 6659     262144    7.6    6.3    48.8   42.2
+          map                       Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(521,1)-(522,36)                           6684    9961434   12.1   10.2    12.1   10.2
+           cons                     Data.ListLike.Base                      src\Data\ListLike\Base.hs:584:5-20                              6719    7864362    0.0    0.0     0.0    0.0
+          ++                        Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(457,1)-(458,33)                           6683    8388549    3.4    4.1     3.4    4.1
+          <+.\.conn                 Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:125:9-72         6727     524268    0.3    0.0     0.4    0.0
+           ==                       Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:78:37-38         6728    1048536    0.0    0.0     0.0    0.0
+           connLSym                 Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:67:3-10          6729     524268    0.1    0.0     0.1    0.0
+          cons                      Data.ListLike.Base                      src\Data\ListLike\Base.hs:584:5-20                              6726     524268    0.0    0.0     0.0    0.0
+          tail                      Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:443:1-20                                   6752     524268    0.1    0.0     0.1    0.0
+          <+.\.space                Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:124:9-26         6724     262125    0.0    0.0     0.0    0.0
+           spaceSym                 Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:71:3-10          6725     262125    0.0    0.0     0.0    0.0
+          <+.\.wireL                Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:126:9-62         6720     262125    0.1    0.0     0.1    0.0
+           ==                       Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:78:37-38         6721     524250    0.0    0.0     0.0    0.0
+          <+.\.wireV                Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:123:9-26         6756     262125    0.1    0.0     0.2    0.0
+           wireVSym                 Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:66:3-10          6757     262125    0.1    0.0     0.1    0.0
+          ++>                       Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:21:3-39                    6667          0    0.0    0.0    24.8   21.6
+           +>                       Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(100,3)-(118,5)  6668          0    0.0    0.0    24.8   21.6
+            +>.\                    Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(100,81)-(118,5) 6669          0    9.7    7.1    24.8   21.6
+             map                    Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(521,1)-(522,36)                           6754    9961434   10.9   10.2    10.9   10.2
+              cons                  Data.ListLike.Base                      src\Data\ListLike\Base.hs:584:5-20                              6763    7864362    0.0    0.0     0.0    0.0
+             ++                     Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(457,1)-(458,33)                           6753    9174942    3.3    4.3     3.3    4.3
+             +>.\.conn              Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:106:9-72         6759     524268    0.2    0.0     0.4    0.0
+              ==                    Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:78:37-38         6760    1048536    0.0    0.0     0.0    0.0
+              connRSym              Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:69:3-10          6761     524268    0.2    0.0     0.2    0.0
+             cons                   Data.ListLike.Base                      src\Data\ListLike\Base.hs:584:5-20                              6758     524268    0.0    0.0     0.0    0.0
+             singleton              Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:265:1-24                                   6755     524268    0.0    0.0     0.0    0.0
+             tail                   Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:443:1-20                                   6762     524268    0.2    0.0     0.2    0.0
+             +>.\.space             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:105:9-26         6769     262125    0.0    0.0     0.2    0.0
+              spaceSym              Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:71:3-10          6770     262125    0.2    0.0     0.2    0.0
+             +>.\.wireR             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:107:9-62         6767     262125    0.1    0.0     0.1    0.0
+              ==                    Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:78:37-38         6768     524250    0.0    0.0     0.0    0.0
+             +>.\.wireV             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:104:9-26         6764     262125    0.1    0.0     0.2    0.0
+              wireVSym              Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:66:3-10          6765     262125    0.1    0.0     0.1    0.0
+             mergeCxt               Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(81,1)-(88,17)   6766     262125    0.0    0.0     0.0    0.0
+       line                         Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:20:3-29                    6671          0    0.4    1.1     3.1    2.4
+        lineT                       Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(97,3)-(99,115)  6731          0    2.3    1.4     2.7    1.4
+         cons                       Data.ListLike.Base                      src\Data\ListLike\Base.hs:584:5-20                              6734    1048575    0.0    0.0     0.0    0.0
+         singleton                  Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:265:1-24                                   6733    1048575    0.0    0.0     0.0    0.0
+         wireHSym                   Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:65:3-10          6735    1048575    0.5    0.0     0.5    0.0
+   toText                           Examples                                test\Examples.hs:19:1-50                                        6611          0    0.0    0.0    29.0   42.5
+    runRenderUnicodeDraw            Data.Text.DrawADT.Render.Unicode        src\Data\Text\DrawADT\Render\Unicode.hs:13:1-58                 6612          0    0.0    0.0    29.0   42.5
+     runWrap                        Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:17:1-24                    6613          1    0.0    0.0    29.0   42.5
+      runRenderUnicodeDrawT         Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:164:1-88         6633          1    0.0    0.0    29.0   42.5
+       flattenUnicodeDrawT          Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(168,1)-(174,69) 6672          1    0.0    0.0    25.0   38.8
+        flattenUnicodeDrawT.all     Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(170,7)-(173,39) 6676          1    0.0    0.0    13.3   19.1
+         map                        Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(521,1)-(522,36)                           6680    1048579    1.3    1.1    13.0   18.6
+          concat                    Data.ListLike.Text.TextLazy             src\Data\ListLike\Text\TextLazy.hs:42:5-30                      6692          0   11.7   17.5    11.7   17.5
+         ++                         Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(457,1)-(458,33)                           6678     786435    0.3    0.5     0.3    0.5
+         concat                     Data.ListLike.Text.TextLazy             src\Data\ListLike\Text\TextLazy.hs:42:5-30                      6691          4    0.0    0.0     0.0    0.0
+        foldr                       Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(581,1)-(584,31)                           6674          1    0.0    0.0    11.7   19.7
+         foldr.go                   Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(583,5)-(584,31)                           6675    1048576    1.4    0.4    11.7   19.7
+          flattenUnicodeDrawT.\     Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:174:28-61        6688    1048575    1.0    0.5    10.3   19.3
+           append                   Data.ListLike.Text.TextLazy             src\Data\ListLike\Text\TextLazy.hs:32:5-21                      6690          0    9.3   18.8     9.3   18.8
+        flattenUnicodeDrawT.\       Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:174:28-61        6743          0    0.0    0.0     0.0    0.0
+         fromString                 Data.Text.Lazy                          Data\Text\Lazy.hs:366:5-21                                      6744          0    0.0    0.0     0.0    0.0
+          shiftL                    Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:60:5-50                      6745          1    0.0    0.0     0.0    0.0
+          unstreamChunks/outer      Data.Text.Internal.Lazy.Fusion          Data\Text\Internal\Lazy\Fusion.hs:(62,15)-(68,43)               6746          1    0.0    0.0     0.0    0.0
+           shiftL                   Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:60:5-50                      6747          1    0.0    0.0     0.0    0.0
+           shiftR                   Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:63:5-51                      6748          1    0.0    0.0     0.0    0.0
+           unstreamChunks/inner     Data.Text.Internal.Lazy.Fusion          Data\Text\Internal\Lazy\Fusion.hs:(79,17)-(83,59)               6749          1    0.0    0.0     0.0    0.0
+        fromString                  Data.Text.Lazy                          Data\Text\Lazy.hs:366:5-21                                      6794          0    0.0    0.0     0.0    0.0
+         shiftL                     Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:60:5-50                      6795          1    0.0    0.0     0.0    0.0
+         unstreamChunks/outer       Data.Text.Internal.Lazy.Fusion          Data\Text\Internal\Lazy\Fusion.hs:(62,15)-(68,43)               6796          1    0.0    0.0     0.0    0.0
+       draw                         Examples                                test\Examples.hs:(49,3)-(53,80)                                 6639          0    0.0    0.0     4.1    3.8
+        apply                       Extend                                  test\Extend.hs:33:3-38                                          6640          0    0.0    0.0     0.0    0.0
+         applyT                     Extend                                  test\Extend.hs:(22,3)-(24,37)                                   6641          0    0.0    0.0     0.0    0.0
+          applyT.\                  Extend                                  test\Extend.hs:(22,66)-(24,37)                                  6642          0    0.0    0.0     0.0    0.0
+        para                        Data.Functor.Foldable                   Data\Functor\Foldable.hs:162:3-57                               6650          0    0.0    0.0     4.1    3.8
+         para.p                     Data.Functor.Foldable                   Data\Functor\Foldable.hs:162:20-57                              6651          0    0.0    0.0     4.1    3.8
+          draw.alg                  Examples                                test\Examples.hs:(50,11)-(53,80)                                6652          0    0.0    0.0     4.1    3.8
+           ++>                      Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:21:3-39                    6653          0    0.0    0.0     2.1    1.9
+            +>                      Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(100,3)-(118,5)  6654          0    0.0    0.0     2.1    1.9
+             +>.\                   Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(100,81)-(118,5) 6655          0    0.0    0.0     2.1    1.9
+              map                   Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(521,1)-(522,36)                           6779    1048612    1.7    1.4     1.7    1.4
+               cons                 Data.ListLike.Base                      src\Data\ListLike\Base.hs:584:5-20                              6780    1048536    0.0    0.0     0.0    0.0
+              ++                    Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(457,1)-(458,33)                           6778     786525    0.4    0.5     0.4    0.5
+              +>.\.conn             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:106:9-72         6786         19    0.0    0.0     0.0    0.0
+               ==                   Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:78:37-38         6787         38    0.0    0.0     0.0    0.0
+               connRSym             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:69:3-10          6788         19    0.0    0.0     0.0    0.0
+              cons                  Data.ListLike.Base                      src\Data\ListLike\Base.hs:584:5-20                              6785         19    0.0    0.0     0.0    0.0
+              singleton             Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:265:1-24                                   6784         19    0.0    0.0     0.0    0.0
+              tail                  Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:443:1-20                                   6789         19    0.0    0.0     0.0    0.0
+              +>.\.space            Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:105:9-26         6792         18    0.1    0.0     0.1    0.0
+               spaceSym             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:71:3-10          6793         18    0.0    0.0     0.0    0.0
+              +>.\.wireR            Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:107:9-62         6790         18    0.0    0.0     0.0    0.0
+               ==                   Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:78:37-38         6791         36    0.0    0.0     0.0    0.0
+              +>.\.wireV            Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:104:9-26         6781         18    0.0    0.0     0.0    0.0
+               wireVSym             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:66:3-10          6782         18    0.0    0.0     0.0    0.0
+              mergeCxt              Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(81,1)-(88,17)   6783         18    0.0    0.0     0.0    0.0
+           <++                      Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:22:3-39                    6660          0    0.0    0.0     1.9    1.9
+            <+                      Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(119,3)-(137,5)  6661          0    0.0    0.0     1.9    1.9
+             <+.\                   Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(119,81)-(137,5) 6662          0    0.0    0.0     1.9    1.9
+              map                   Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(521,1)-(522,36)                           6682    1048612    1.8    1.4     1.8    1.4
+               cons                 Data.ListLike.Base                      src\Data\ListLike\Base.hs:584:5-20                              6694    1048536    0.0    0.0     0.0    0.0
+              ++                    Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:(457,1)-(458,33)                           6681     786488    0.2    0.5     0.2    0.5
+              <+.\.conn             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:125:9-72         6772         19    0.0    0.0     0.0    0.0
+               ==                   Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:78:37-38         6773         38    0.0    0.0     0.0    0.0
+               connLSym             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:67:3-10          6774         19    0.0    0.0     0.0    0.0
+              cons                  Data.ListLike.Base                      src\Data\ListLike\Base.hs:584:5-20                              6771         19    0.0    0.0     0.0    0.0
+              tail                  Data.Vec.Lazy                           src\Data\Vec\Lazy.hs:443:1-20                                   6775         19    0.0    0.0     0.0    0.0
+              <+.\.space            Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:124:9-26         6698         18    0.0    0.0     0.0    0.0
+               spaceSym             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:71:3-10          6699         18    0.0    0.0     0.0    0.0
+              <+.\.wireL            Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:126:9-62         6695         18    0.0    0.0     0.0    0.0
+               ==                   Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:78:37-38         6696         36    0.0    0.0     0.0    0.0
+              <+.\.wireV            Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:123:9-26         6776         18    0.0    0.0     0.0    0.0
+               wireVSym             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:66:3-10          6777         18    0.0    0.0     0.0    0.0
+ CAF:main3                          Main                                    <no location info>                                              3346          0    0.0    0.0    15.0   10.9
+  main                              Main                                    test\Spec.hs:(9,1)-(11,11)                                      6614          0    0.0    0.0    15.0   10.9
+   draw                             Examples                                test\Examples.hs:(49,3)-(53,80)                                 6615          1    0.0    0.0    15.0   10.9
+    apply                           Extend                                  test\Extend.hs:33:3-38                                          6616          1    0.0    0.0     0.0    0.0
+     applyT                         Extend                                  test\Extend.hs:(22,3)-(24,37)                                   6634          1    0.0    0.0     0.0    0.0
+    para                            Data.Functor.Foldable                   Data\Functor\Foldable.hs:162:3-57                               6617          1    0.0    0.0    15.0   10.9
+     para.p                         Data.Functor.Foldable                   Data\Functor\Foldable.hs:162:20-57                              6618    1048575    0.3    1.8    15.0   10.9
+      draw.alg                      Examples                                test\Examples.hs:(50,11)-(53,80)                                6629    1048575    3.5    2.2    14.6    9.1
+       line                         Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:20:3-29                    6632    1048575    2.2    1.9     8.0    4.4
+        lineT                       Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(97,3)-(99,115)  6670    1048575    2.6    0.7     5.8    2.5
+         singleton                  Data.ListLike.Base                      src\Data\ListLike\Base.hs:583:5-21                              6736    1048575    0.0    0.0     0.0    0.0
+         fromString                 Data.Text.Lazy                          Data\Text\Lazy.hs:366:5-21                                      6737          0    2.2    1.1     3.2    1.9
+          shiftL                    Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:60:5-50                      6738    1048575    0.0    0.0     0.0    0.0
+          unstreamChunks/outer      Data.Text.Internal.Lazy.Fusion          Data\Text\Internal\Lazy\Fusion.hs:(62,15)-(68,43)               6739    1048575    0.9    0.3     1.0    0.8
+           unstreamChunks/inner     Data.Text.Internal.Lazy.Fusion          Data\Text\Internal\Lazy\Fusion.hs:(79,17)-(83,59)               6742    1050622    0.1    0.5     0.1    0.5
+           shiftL                   Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:60:5-50                      6740    1048575    0.0    0.0     0.0    0.0
+           shiftR                   Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:63:5-51                      6741    1048575    0.0    0.0     0.0    0.0
+       ++>                          Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:21:3-39                    6630     524287    0.9    0.8     0.9    0.8
+        +>                          Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(100,3)-(118,5)  6643     524287    0.0    0.0     0.0    0.0
+       <++                          Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:22:3-39                    6631     524287    0.8    1.0     2.2    1.7
+        <+                          Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(119,3)-(137,5)  6656     524287    0.1    0.2     1.4    0.8
+         <+.\                       Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(119,81)-(137,5) 6663     262143    0.5    0.2     1.2    0.6
+          mergeCxt                  Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(81,1)-(88,17)   6723     262143    0.0    0.0     0.0    0.0
+          ++>                       Data.Text.DrawADT.Render.Wrap           src\Data\Text\DrawADT\Render\Wrap.hs:21:3-39                    6664          0    0.0    0.0     0.7    0.4
+           +>                       Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(100,3)-(118,5)  6665          0    0.0    0.0     0.7    0.4
+            +>.\                    Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(100,81)-(118,5) 6666     262143    0.4    0.4     0.7    0.4
+             mergeCxt               Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(81,1)-(88,17)   6722     262143    0.3    0.0     0.3    0.0
+ CAF:main4                          Main                                    <no location info>                                              3345          0    0.0    0.0     1.1    1.4
+  main                              Main                                    test\Spec.hs:(9,1)-(11,11)                                      6619          0    0.0    0.0     1.1    1.4
+   testBinTree                      Examples                                test\Examples.hs:(41,1)-(44,50)                                 6625          0    0.0    0.0     1.1    1.4
+    ana                             Data.Functor.Foldable                   Data\Functor\Foldable.hs:198:3-40                               6626          0    0.2    0.0     1.1    1.4
+     ana.a                          Data.Functor.Foldable                   Data\Functor\Foldable.hs:198:19-40                              6627          0    0.8    1.4     0.8    1.4
+      testBinTree.coalg             Examples                                test\Examples.hs:(42,9)-(44,50)                                 6628    2097151    0.0    0.0     0.0    0.0
+ CAF:testBinTree                    Examples                                test\Examples.hs:41:1-11                                        3341          0    0.0    0.0     0.0    0.0
+  testBinTree                       Examples                                test\Examples.hs:(41,1)-(44,50)                                 6620          1    0.0    0.0     0.0    0.0
+   ana                              Data.Functor.Foldable                   Data\Functor\Foldable.hs:198:3-40                               6621          1    0.0    0.0     0.0    0.0
+ CAF:testBinTree_a1                 Examples                                <no location info>                                              3340          0    0.0    0.0     0.0    0.0
+  testBinTree                       Examples                                test\Examples.hs:(41,1)-(44,50)                                 6622          0    0.0    0.0     0.0    0.0
+   ana                              Data.Functor.Foldable                   Data\Functor\Foldable.hs:198:3-40                               6623          0    0.0    0.0     0.0    0.0
+    ana.a                           Data.Functor.Foldable                   Data\Functor\Foldable.hs:198:19-40                              6624          1    0.0    0.0     0.0    0.0
+ CAF:toText                         Examples                                test\Examples.hs:19:1-6                                         3323          0    0.0    0.0     0.0    0.0
+  toText                            Examples                                test\Examples.hs:19:1-50                                        6609          1    0.0    0.0     0.0    0.0
+   runRenderUnicodeDraw             Data.Text.DrawADT.Render.Unicode        src\Data\Text\DrawADT\Render\Unicode.hs:13:1-58                 6610          1    0.0    0.0     0.0    0.0
+ CAF:toText_c                       Examples                                <no location info>                                              3322          0    0.0    0.0     0.0    0.0
+  toText                            Examples                                test\Examples.hs:19:1-50                                        6700          0    0.0    0.0     0.0    0.0
+   defaultUnicodeConfig             Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:55:1-56          6701          1    0.0    0.0     0.0    0.0
+    genUnicodeConfig                Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:(36,1)-(52,62)   6702          1    0.0    0.0     0.0    0.0
+     genUnicodeConfig.len           Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:37:7-24          6707          1    0.0    0.0     0.0    0.0
+     genUnicodeConfig.spaces        Data.Text.DrawADT.Tagged.Render.Unicode src\Data\Text\DrawADT\Tagged\Render\Unicode.hs:38:7-34          6708          1    0.0    0.0     0.0    0.0
+     fromString                     Data.Text.Lazy                          Data\Text\Lazy.hs:366:5-21                                      6704          0    0.0    0.0     0.0    0.0
+      shiftL                        Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:60:5-50                      6705          5    0.0    0.0     0.0    0.0
+      unstreamChunks/outer          Data.Text.Internal.Lazy.Fusion          Data\Text\Internal\Lazy\Fusion.hs:(62,15)-(68,43)               6706          5    0.0    0.0     0.0    0.0
+       unstreamChunks/inner         Data.Text.Internal.Lazy.Fusion          Data\Text\Internal\Lazy\Fusion.hs:(79,17)-(83,59)               6711         24    0.0    0.0     0.0    0.0
+        unstreamChunks/resize       Data.Text.Internal.Lazy.Fusion          Data\Text\Internal\Lazy\Fusion.hs:(72,72)-(76,38)               6712          5    0.0    0.0     0.0    0.0
+         maBA                       Data.Text.Array                         Data\Text\Array.hs:95:7-10                                      6715         10    0.0    0.0     0.0    0.0
+         shiftL                     Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:60:5-50                      6713         10    0.0    0.0     0.0    0.0
+         shiftR                     Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:63:5-51                      6714          5    0.0    0.0     0.0    0.0
+       shiftL                       Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:60:5-50                      6709          5    0.0    0.0     0.0    0.0
+       shiftR                       Data.Text.Internal.Unsafe.Shift         Data\Text\Internal\Unsafe\Shift.hs:63:5-51                      6710          5    0.0    0.0     0.0    0.0
+ main                               Main                                    test\Spec.hs:(9,1)-(11,11)                                      6607          0    0.0    0.0     0.0    0.0

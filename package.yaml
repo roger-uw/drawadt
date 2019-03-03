@@ -28,6 +28,8 @@ dependencies:
 
 library:
   source-dirs: src
+  ghc-options:
+    - -O2
 
 tests:
   drawadt-test:
@@ -41,3 +43,4 @@ tests:
     - drawadt
     - text
     - recursion-schemes
+    - deepseq
