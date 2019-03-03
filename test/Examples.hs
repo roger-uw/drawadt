@@ -74,6 +74,14 @@ instance (Draw repr, BlockDraw repr, ApplyDraw repr, DrawADT repr a) => DrawADT 
     where alg (QuadTreeF a fl nl nr fr) = fl <++ nl <++ block QuadTree (draw a) ++> nr ++> fr
           alg QuadEmptyF = line QuadEmpty " ~"
 
+newtype NamedComplexQuadTree a = NamedComplexQuadTree (QuadTree a)
+
+instance (Draw repr, NamedBlockDraw repr, ApplyDraw repr, DrawADT repr a) => 
+  DrawADT repr (NamedComplexQuadTree a) where
+  draw (NamedComplexQuadTree t) = apply NamedComplexQuadTree (cata alg t)
+    where alg (QuadTreeF a fl nl nr fr) = fl <++ nl <++ namedBlock QuadTree "QuadTree" (draw a) ++> nr ++> fr
+          alg QuadEmptyF = line QuadEmpty " ~"
+
 testComplexQuadTree :: Int -> QuadTree [Int]
 testComplexQuadTree = ana coalg
   where coalg n

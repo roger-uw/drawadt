@@ -17,9 +17,11 @@ module Data.Text.DrawADT.Tagged.Render.Unicode (
   defaultUnicodeConfig,
   RenderUnicodeDrawT(..),
   runRenderUnicodeDrawT,
-  UnicodeConfig,
+  UnicodeConfig(..),
   RenderUnicodeDrawTConstraints,
-  UnicodeDrawT(..)
+  UnicodeDrawT(..),
+  Cxt(..),
+  mergeCxt
 ) where
 
 import Data.Text.DrawADT.Tagged.DrawT
