@@ -111,9 +111,9 @@ instance (RenderUnicodeDrawTConstraints v l s) => DrawT (RenderUnicodeDrawT v l 
       nearRightT = nr1
           `SL.append` fr1 
           `SL.append` SL.map (LL.cons wireV) fl2
-          `SL.append` SL.map (LL.cons wireV) nl2
-          `SL.append` SL.singleton (LL.cons conn (SL.head nr2)),
-      farRightT = SL.map (LL.cons wireR) (SL.tail nr2)
+          `SL.append` SL.map (LL.cons wireV) nl2,
+      farRightT =     LL.cons conn (SL.head nr2)
+          `SL.cons`   SL.map (LL.cons wireR) (SL.tail nr2)
           `SL.append` SL.map (LL.cons wireR) fr2
     }
   RenderUnicodeDrawT d1 <+ RenderUnicodeDrawT d2 = RenderUnicodeDrawT $ \cxt -> do

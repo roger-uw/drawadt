@@ -22,7 +22,7 @@ class DrawT (repr :: Nat -> Nat -> Nat -> Nat -> Type -> Type) where
   lineT :: a -> String -> repr Z Z (S Z) Z a
   (+>) :: repr fl nl (S nr) fr (a -> b)
           -> repr fl' nl' (S nr') fr' a
-          -> repr fl nl (Plus (S nr) (Plus fr (Plus fl' (Plus nl' (S Z))))) (Plus nr' fr') b
+          -> repr fl nl (Plus (S nr) (Plus fr (Plus fl' nl'))) (Plus (S nr') fr') b
   (<+) :: repr fl nl (S nr) fr a
           -> repr fl' nl' (S nr') fr' (a -> b)
           -> repr (Plus fl nl) (Plus (S nr) (Plus fr (Plus fl' nl'))) (S nr') fr' b

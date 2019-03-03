@@ -1,4 +1,5 @@
 .stack-work/
 .vscode/
+drawadt-test.prof
 drawadt.cabal
 *~
