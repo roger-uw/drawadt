@@ -135,7 +135,6 @@ If we do not want to see these `~` for empty trees, the following code presents 
 ```haskell
 newtype LeafBinTree a = LeafBinTree (BinTree a)
 
--- apply is defined in Extend.hs
 instance (Draw repr, ApplyDraw repr, Show a) => DrawADT repr (LeafBinTree a) where
   draw (LeafBinTree t) = apply LeafBinTree (para alg t)
     where alg (BinTreeF a (BinEmpty, _) (BinEmpty, _)) = line (BinTree a BinEmpty BinEmpty) (show a)
