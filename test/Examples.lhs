@@ -26,6 +26,8 @@ import Data.Text.DrawADT
 import Extend
 ```
 
+### Example: Draw a list
+
 ```haskell
 -- class Draw (repr :: * -> *) where
 --   line :: a -> String -> repr a
