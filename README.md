@@ -265,6 +265,8 @@ Run `printDraw (draw (ComplexQuadTree (testComplexQuadTree 3)))` and we will get
     └──── ~
 ```
 
+### More examples
+
 ```haskell
 data RoseTree a = RoseTree a [RoseTree a] deriving (Show)
 
