@@ -7,5 +7,5 @@ import Control.Exception (evaluate)
 
 main :: IO ()
 main = do
-  evaluate (rnf (toText (draw (LeafBinTree (testBinTree 20)))))
+  evaluate (rnf (toText defaultUnicodeConfig (draw (LeafBinTree (testBinTree 20)))))
   return ()

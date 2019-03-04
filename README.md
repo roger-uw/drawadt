@@ -43,11 +43,11 @@ testList = [1..5]
 Now we select the Unicode render and apply the default configuration. The following auxiliary functions will also be used for other examples.
 
 ```haskell
-toText :: RenderUnicodeDraw VL.Vec [] T.Text a -> T.Text
-toText = runRenderUnicodeDraw defaultUnicodeConfig
+toText :: UnicodeConfig T.Text -> RenderUnicodeDraw VL.Vec [] T.Text a -> T.Text
+toText = runRenderUnicodeDraw
 
 printDraw :: RenderUnicodeDraw VL.Vec [] T.Text a -> IO ()
-printDraw = T.putStr . toText
+printDraw = T.putStr . toText defaultUnicodeConfig
 ```
 
 Run `printDraw (draw testList)` and we will get:

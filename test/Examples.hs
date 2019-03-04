@@ -4,7 +4,7 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
-
+{-# LANGUAGE FlexibleContexts #-}
 module Examples where
 
 import Data.Text.DrawADT
@@ -14,12 +14,20 @@ import qualified Data.Text.Lazy as T
 import qualified Data.Text.Lazy.IO as T
 import qualified Data.Vec.Lazy as VL
 import Extend
+import qualified Data.ListLike as LL
+import Data.String
 
-toText :: RenderUnicodeDraw VL.Vec [] T.Text a -> T.Text
-toText = runRenderUnicodeDraw defaultUnicodeConfig
+newUnicodeConfig :: (IsString s, LL.ListLike s Char) => UnicodeConfig s
+newUnicodeConfig = genUnicodeConfig "│╭├╰├╩╦╬═ ────"
+
+toText :: UnicodeConfig T.Text -> RenderUnicodeDraw VL.Vec [] T.Text a -> T.Text
+toText = runRenderUnicodeDraw
 
 printDraw :: RenderUnicodeDraw VL.Vec [] T.Text a -> IO ()
-printDraw = T.putStr . toText
+printDraw = T.putStr . toText defaultUnicodeConfig
+
+newPrintDraw :: RenderUnicodeDraw VL.Vec [] T.Text a -> IO ()
+newPrintDraw = T.putStr . toText newUnicodeConfig
 
 instance (Draw repr, Show a) => DrawADT repr [a] where
   draw = foldr f (line [] " ~")
