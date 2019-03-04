@@ -164,6 +164,32 @@ _may not be correctly displayed if the font is not monospaced_
 
 A code snippet by Donnacha Oisín Kidney for a similar purpose can be found at [Drawing Trees](https://doisinkidney.com/snippets/drawing-trees.html).
 
+A [drawing DSL](https://gist.github.com/chrisdone/c46f6c76021e5e2666e835b84197a7e8) developed by [Chris Done](https://github.com/chrisdone) could also be used to draw binary trees (and other data types). It will produce a diagram for `testBinTree 4` as follows.
+
+_may not be correctly displayed if the font is not monospaced_
+
+```
+           ╭┴╮
+           │4│
+           ╰┬╯
+       ╭────┴──────╮
+      ╭┴╮         ╭┴╮
+      │3│         │2│
+      ╰┬╯         ╰┬╯
+    ╭──┴────╮     ╭┴──╮
+   ╭┴╮     ╭┴╮   ╭┴╮ ╭┴╮
+   │2│     │1│   │1│ │~│
+   ╰┬╯     ╰┬╯   ╰┬╯ ╰─╯
+   ╭┴──╮  ╭─┴╮  ╭─┴╮
+  ╭┴╮ ╭┴╮╭┴╮╭┴╮╭┴╮╭┴╮
+  │1│ │~││~││~││~││~│
+  ╰┬╯ ╰─╯╰─╯╰─╯╰─╯╰─╯
+ ╭─┴╮
+╭┴╮╭┴╮
+│~││~│
+╰─╯╰─╯
+```
+
 ### Example: Draw a quadtree
 
 ```haskell
